@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 style="display: flex; justify-content: center;">Home page</h1>
+{% for user in users %}
+    <div class="container">
+        <h2>user {{ user.id }}</h2>
+        <h3>{{ user.name }}</h3>
+        <h3>{{ user.email }}</h3>
+        {% if user.is_active %}
+            <div class="activity active"></div>
+        {% else %}
+            <div class="activity inactive"></div>
+        {% endif %}
+    </div>
+    <hr>
+{% endfor %}
+{% endblock %}
